@@ -46,5 +46,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN /usr/local/texlive/*/bin/*/tlmgr path add
 
+RUN tlmgr install \
+    bera
+
 CMD ["bash"]
 

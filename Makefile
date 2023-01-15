@@ -1,23 +1,3 @@
-
-DOCKER_IMAGE=mytexlive
-
-.PHONY: ubuntu-img
-ubuntu-img:
-	docker build --network=host -t $(DOCKER_IMAGE):ubuntu -f Dockerfile.ubuntu .
-
-.PHONY: alpine-img
-alpine-img:
-	docker build --network=host -t $(DOCKER_IMAGE):alpine -f Dockerfile.alpine .
-
-.PHONY: ubuntu-sh
-ubuntu-sh:
-	docker run --rm -it -v $(PWD):/workdir $(DOCKER_IMAGE):ubuntu /bin/bash
-
-.PHONY: alpine-sh
-alpine-sh:
-	docker run --rm -it -v $(PWD):/workdir $(DOCKER_IMAGE):alpine /bin/bash
-
-
 TARGET=main.tex
 BASE_NAME=$(basename $(TARGET))
 BUILD_DIR=build
@@ -34,4 +14,24 @@ $(BASE_NAME).pdf: $(TARGET)
 clean:
 	rm -rf $(BUILD_DIR)
 	rm $(BASE_NAME).pdf
+
+DOCKER_IMAGE=mytexlive
+MAKEFILE_DIR:=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+
+.PHONY: ubuntu-img
+ubuntu-img:
+	docker build --network=host -t $(DOCKER_IMAGE):ubuntu -f $(MAKEFILE_DIR)/Dockerfile.ubuntu .
+
+.PHONY: alpine-img
+alpine-img:
+	docker build --network=host -t $(DOCKER_IMAGE):alpine -f $(MAKEFILE_DIR)/Dockerfile.alpine .
+
+.PHONY: ubuntu-sh
+ubuntu-sh:
+	docker run --rm -it -v $(PWD):/workdir $(DOCKER_IMAGE):ubuntu /bin/bash
+
+.PHONY: alpine-sh
+alpine-sh:
+	docker run --rm -it -v $(PWD):/workdir $(DOCKER_IMAGE):alpine /bin/bash
+
 
