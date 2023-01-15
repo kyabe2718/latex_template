@@ -42,4 +42,7 @@ RUN apk add --no-cache bash perl wget
 
 RUN /usr/local/texlive/*/bin/*/tlmgr path add
 
+RUN tlmgr install \
+    bera
+
 CMD ["bash"]

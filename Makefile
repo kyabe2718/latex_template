@@ -1,7 +1,8 @@
-TARGET=main.tex
-BASE_NAME=$(basename $(TARGET))
-BUILD_DIR=build
-IMAGE_TAG=ubuntu
+SOURCE_FILE ?= main.tex
+BUILD_DIR ?= build
+IMAGE_TAG ?= ubuntu
+
+BASE_NAME:=$(basename $(SOURCE_FILE))
 
 .PHONY: pdf
 pdf:
