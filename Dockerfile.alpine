@@ -1,0 +1,45 @@
+# Installer
+FROM alpine:3.17 AS installer
+
+WORKDIR /install-tl
+
+RUN apk add --no-cache \
+    perl        \
+    tar         \
+    wget        \
+    xz          \
+    fontconfig
+
+RUN wget -nv https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
+    tar -xzf ./install-tl-unx.tar.gz --strip-components=1
+
+RUN ./install-tl        \
+    -scheme scheme-basic\
+    --no-interaction    \
+    -no-doc-install     \
+    -no-src-install
+
+RUN /usr/local/texlive/*/bin/*/tlmgr path add
+
+RUN tlmgr install               \
+    collection-langjapanese     \
+    collection-fontsrecommended \
+    collection-latexextra       \
+    collection-mathscience      \
+    collection-luatex           \
+    collection-pictures         \
+    latexmk
+
+
+# App
+FROM alpine:3.17
+
+WORKDIR /workdir
+
+COPY --from=installer /usr/local/texlive /usr/local/texlive
+
+RUN apk add --no-cache bash perl wget
+
+RUN /usr/local/texlive/*/bin/*/tlmgr path add
+
+CMD ["bash"]

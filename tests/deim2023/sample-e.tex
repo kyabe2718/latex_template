@@ -1,0 +1,83 @@
+\documentclass{deime}
+%\usepackage[dvipdfm]{graphicx}
+%\usepackage{latexsym}
+%\usepackage{txfonts}
+%\usepackage[fleqn]{amsmath}
+%\usepackage[psamsfonts]{amssymb}
+%\usepackage[deluxe]{otf}
+
+% 印刷位置調整 %
+% 必要に応じて値を変更してください．
+\hoffset -10mm % <-- 左に 10mm 移動
+\voffset -10mm % <-- 上に 10mm 移動
+
+\newcommand{\AmSLaTeX}{%
+ $\mathcal A$\lower.4ex\hbox{$\!\mathcal M\!$}$\mathcal S$-\LaTeX}
+\newcommand{\PS}{{\scshape Post\-Script}}
+\def\BibTeX{{\rmfamily B\kern-.05em{\scshape i\kern-.025em b}\kern-.08em
+ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
+
+\papernumber{DEIM Forum 2023 XX-Y}
+
+\etitle{DEIM Forum 2023 Class File }
+%\esubtitle{Subtitle} <- uncomment if you need subtitle.
+\authorlist{%
+ \authorentry[nishinosono@n-univ.ac.jp]{西之園 萌絵}{Moe Nishinosono}{UnivN}% 
+ \authorentry[saikawa@n-univ.ac.jp]{犀川 創平}{Sohei Saikawa}{UnivN}% 
+ \authorentry[magata@magata-lab.co.jp]{真賀田 四季}{Shiki Magata}{Mlab}% 
+}
+\affiliate[UnivN]{}
+ {School of Engineering, N University\\
+  Furo-cho, Chikusa-ku, Nagoya-shi, Aichi 464--8603, Japan}
+\affiliate[Mlab]{}
+ {Magata Laboratory,\\
+  1--1 Himakajima, Isshiki-cho, Nishio-shi, Aichi 444--0416, Japan}
+
+%\MailAddress{$\dagger$hanako@deim.ac.jp,
+% $\dagger\dagger$\{taro,jiro\}@jforum.co.jp}
+
+\begin{document}
+\pagestyle{empty}
+\begin{eabstract}
+Paper format for DEIM Forum 2023 Proceedings.
+\end{eabstract}
+\begin{ekeyword}
+p\LaTeXe\ class file, typesetting
+\end{ekeyword}
+\maketitle
+
+\section{Top page format}
+
+In the first page, a title, an author list, an authors' affiliation and address list,
+e-mail address list, abstract (about 100 words) and keywords must be included.
+The following command must be included to insert paper ID.
+\begin{verbatim}
+ \papernumber{DEIM Forum 2023 XX-Y}
+\end{verbatim}
+where XX is a session ID (e.g., 1A, 3B), Y is a presentation order (e.g., 1, 2)
+in the session.
+Authors should refer these numbers on the program. 
+Note that, for the initial submission which date is before becoming the program online,
+these numbers are kept XX-Y or blank.  
+
+\section{The number of pages}
+
+All submissions are limited to 4 pages to 8 pages.
+For whom presenting in PhD presentation, submissions are recommended to be 8 pages.
+
+\section{Paper style}
+
+Paper must be styled as A4, 9 point font, double-columned, and single spacing.
+
+%\vspace{30mm} <- Use if the body is too close to the references.
+\vspace{2em}
+
+\begin{thebibliography}{99}
+\bibitem{Codd1970}
+  E. F. Codd, 
+  ``A Relational Model of Data for Large Shared Data Banks,''
+  Communications of the {ACM} (CACM), Vol. 13, No. 6, pp. 377--387, 1970.
+\end{thebibliography}
+
+
+\end{document}
