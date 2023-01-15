@@ -3,7 +3,8 @@ BASE_NAME=$(basename $(TARGET))
 BUILD_DIR=build
 IMAGE_TAG=ubuntu
 
-$(BASE_NAME).pdf: $(TARGET)
+.PHONY: pdf
+pdf:
 	mkdir -p $(BUILD_DIR)
 	docker run --rm -it \
 		-v $(CURDIR):/workdir \
