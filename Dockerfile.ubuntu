@@ -21,6 +21,8 @@ RUN ./install-tl        \
 
 RUN /usr/local/texlive/*/bin/*/tlmgr path add
 
+RUN tlmgr update --self --all
+
 RUN tlmgr install               \
     collection-langjapanese     \
     collection-fontsrecommended \

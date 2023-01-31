@@ -17,7 +17,7 @@ clean:
 	rm -rf $(BUILD_DIR)
 	rm $(BASE_NAME).pdf
 
-DOCKER_IMAGE=mytexlive
+DOCKER_IMAGE=latex-env
 MAKEFILE_DIR:=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 .PHONY: ubuntu-img
